@@ -4,6 +4,18 @@
   margin: 0 auto;
 }
 
+.products-loading,
+.products-error {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: #666;
+  font-size: 1rem;
+}
+
+.products-error {
+  color: #c00;
+}
+
 @media (min-width: 768px) {
   .products-wrapper {
     padding: 1.5rem;

@@ -8,156 +8,38 @@ export interface ProductItem {
   rating: number
 }
 
-export const products: ProductItem[] = [
-  {
-    id: "1",
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400",
-    name: "Minimalist Watch",
-    description: "Sleek analog watch with leather strap.",
-    price: 149.99,
-    discountedPrice: 119.99,
-    rating: 4.5,
-  },
-  {
-    id: "2",
-    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",
-    name: "Wireless Headphones",
-    description: "Noise-cancelling over-ear headphones.",
-    price: 199.99,
-    rating: 4.8,
-  },
-  {
-    id: "3",
-    image: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400",
-    name: "Compact Camera",
-    description: "Portable camera for everyday shots.",
-    price: 449.99,
-    discountedPrice: 399.99,
-    rating: 4.2,
-  },
-  {
-    id: "4",
-    image: "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400",
-    name: "Skincare Set",
-    description: "Daily moisturizer and serum duo.",
-    price: 59.99,
-    rating: 4.6,
-  },
-  {
-    id: "5",
-    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400",
-    name: "Running Sneakers",
-    description: "Lightweight shoes for long runs.",
-    price: 129.99,
-    discountedPrice: 99.99,
-    rating: 4.7,
-  },
-  {
-    id: "6",
-    image: "https://images.unsplash.com/photo-1560343090-f0409e92791a?w=400",
-    name: "Cotton T-Shirt",
-    description: "Soft organic cotton, unisex fit.",
-    price: 29.99,
-    rating: 4.4,
-  },
-  {
-    id: "7",
-    image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400",
-    name: "Designer Sunglasses",
-    description: "UV protection with polarized lenses.",
-    price: 89.99,
-    rating: 4.9,
-  },
-  {
-    id: "8",
-    image: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400",
-    name: "Leather Backpack",
-    description: "Classic backpack for work and travel.",
-    price: 179.99,
-    discountedPrice: 149.99,
-    rating: 4.3,
-  },
-  {
-    id: "9",
-    image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400",
-    name: "Yoga Mat",
-    description: "Non-slip, eco-friendly mat.",
-    price: 34.99,
-    rating: 4.5,
-  },
-  {
-    id: "10",
-    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400",
-    name: "Water Bottle",
-    description: "Insulated 500ml stainless steel.",
-    price: 24.99,
-    rating: 4.6,
-  },
-  {
-    id: "11",
-    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400",
-    name: "Smartphone Stand",
-    description: "Adjustable stand for desk or bed.",
-    price: 19.99,
-    discountedPrice: 14.99,
-    rating: 4.1,
-  },
-  {
-    id: "12",
-    image: "https://images.unsplash.com/photo-1585916428350-18f8b4c6e0e2?w=400",
-    name: "Desk Lamp",
-    description: "LED lamp with dimmer and USB port.",
-    price: 49.99,
-    rating: 4.7,
-  },
-  {
-    id: "13",
-    image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400",
-    name: "Bluetooth Speaker",
-    description: "Portable speaker with 12h battery.",
-    price: 79.99,
-    rating: 4.4,
-  },
-  {
-    id: "14",
-    image: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=400",
-    name: "Mechanical Keyboard",
-    description: "Tenkeyless RGB mechanical keyboard.",
-    price: 129.99,
-    discountedPrice: 109.99,
-    rating: 4.8,
-  },
-  {
-    id: "15",
-    image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400",
-    name: "Notebook Set",
-    description: "Set of 3 ruled A5 notebooks.",
-    price: 18.99,
-    rating: 4.2,
-  },
-  {
-    id: "16",
-    image: "https://images.unsplash.com/photo-1585128903994-6d246b60a0b4?w=400",
-    name: "Wireless Mouse",
-    description: "Ergonomic wireless mouse.",
-    price: 39.99,
-    rating: 4.5,
-  },
-  {
-    id: "17",
-    image: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400",
-    name: "Travel Pouch",
-    description: "Water-resistant cable and card pouch.",
-    price: 22.99,
-    rating: 4.0,
-  },
-  {
-    id: "18",
-    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400",
-    name: "Coffee Maker",
-    description: "Compact drip coffee maker.",
-    price: 69.99,
-    discountedPrice: 59.99,
-    rating: 4.6,
-  },
-]
+export interface DummyJsonProduct {
+  id: number
+  title: string
+  description: string
+  price: number
+  discountPercentage: number
+  rating: number
+  thumbnail: string
+  images?: string[]
+}
+
+export interface DummyJsonProductsResponse {
+  products: DummyJsonProduct[]
+  total: number
+  skip: number
+  limit: number
+}
+
+export function mapDummyJsonToProductItem(p: DummyJsonProduct): ProductItem {
+  const discountedPrice =
+    p.discountPercentage > 0
+      ? Math.round(p.price * (1 - p.discountPercentage / 100) * 100) / 100
+      : undefined
+  const shortDescription =
+    p.description.length > 100 ? p.description.slice(0, 97) + "..." : p.description
+  return {
+    id: String(p.id),
+    image: p.thumbnail || p.images?.[0] || "",
+    name: p.title,
+    description: shortDescription,
+    price: p.price,
+    discountedPrice,
+    rating: p.rating,
+  }
+}
