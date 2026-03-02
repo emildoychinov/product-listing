@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import "./Filter.css";
+import "../../assets/styles/Filter.css";
 import FilterDropdown from "./FilterDropdown";
 
 function Filter() {
